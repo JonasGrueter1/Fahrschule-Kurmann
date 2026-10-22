@@ -3,847 +3,139 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fahrschule Kurmann | Auto, Motorrad und Roller in Sempach und Sursee</title>
-  <meta name="description" content="Fahrschule Kurmann in Sempach und Sursee: Fahrstunden für Auto, Motorrad und Roller, Motorrad-Grundkurse, VKU und WAB. Persönlich begleitet von Andy Kurmann.">
-  <link rel="canonical" href="https://www.kurmann-fahrschule.ch/">
+  <title>Designvorschläge | Neue Website Fahrschule Kurmann</title>
+  <meta name="description" content="Zwei Designvorschläge für die neue Website der Fahrschule Kurmann.">
+  <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#bc2038">
-
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="de_CH">
-  <meta property="og:site_name" content="Fahrschule Kurmann">
-  <meta property="og:title" content="Fahrschule Kurmann | Sempach und Sursee">
-  <meta property="og:description" content="Fahrstunden für Auto, Motorrad und Roller, Motorrad-Grundkurse, VKU und WAB in Sempach und Sursee.">
-  <meta property="og:url" content="https://www.kurmann-fahrschule.ch/">
-  <meta property="og:image" content="https://www.kurmann-fahrschule.ch/assets/img/og-image.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <script>document.documentElement.classList.add('js')</script>
-  <script src="assets/js/main.js" defer></script>
+  <link rel="stylesheet" href="assets/shared/basis.css">
+  <style>
+    .hero { padding: 64px 0 44px; max-width: 760px; }
+    .hero h1 { font-size: clamp(2.3rem, 5vw, 3.6rem); letter-spacing: -0.04em; margin-bottom: 16px; }
+    .hero p:not(.kicker) { color: var(--muted); font-size: 1.175rem; }
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "DrivingSchool",
-    "name": "Fahrschule Kurmann",
-    "url": "https://www.kurmann-fahrschule.ch/",
-    "logo": "https://www.kurmann-fahrschule.ch/assets/img/logo.png",
-    "image": "https://www.kurmann-fahrschule.ch/assets/img/og-image.jpg",
-    "description": "Fahrschule für Auto, Motorrad und Roller in Sempach und Sursee.",
-    "telephone": "+41 79 761 16 33",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Hubelmatt 21",
-      "postalCode": "6204",
-      "addressLocality": "Sempach",
-      "addressRegion": "LU",
-      "addressCountry": "CH"
-    },
-    "areaServed": ["Sempach", "Sursee", "Ballwil", "Emmen"],
-    "employee": [
-      { "@type": "Person", "name": "Andy Kurmann", "jobTitle": "Fahrlehrer Auto und Motorrad" },
-      { "@type": "Person", "name": "Priska Kurmann", "jobTitle": "Administration" }
-    ]
-  }
-  </script>
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 40px; }
+    .steps li { display: flex; gap: 14px; align-items: flex-start; padding: 18px 20px; border-radius: var(--r); background: var(--white); border: 1px solid var(--line); }
+    .steps span { display: grid; place-items: center; width: 32px; height: 32px; flex: none; border-radius: 50%; background: var(--ink); color: #fff; font-weight: 800; font-size: .95rem; }
+    .steps strong { display: block; }
+    .steps small { display: block; color: var(--muted); font-size: .9rem; line-height: 1.45; }
+
+    .options { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .option { display: flex; flex-direction: column; overflow: hidden; border-radius: var(--r-lg); background: var(--white); border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .shots { position: relative; display: block; padding: 22px 22px 0; background: var(--soft); }
+    .shot-desk { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-radius: 12px 12px 0 0; box-shadow: 0 -2px 20px rgb(22 22 26 / 10%); }
+    .shot-mob { position: absolute; right: 22px; bottom: -1px; width: 22%; aspect-ratio: 1 / 2; object-fit: cover; object-position: top; border-radius: 16px 16px 0 0; border: 5px solid var(--ink); border-bottom: 0; box-shadow: 0 10px 30px rgb(22 22 26 / 30%); }
+    .option-body { display: flex; flex-direction: column; gap: 14px; flex: 1; padding: 26px 28px 30px; }
+    .option-tag { color: var(--red); font-size: .8125rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .option h2 { font-size: 1.75rem; margin-top: -8px; }
+    .option p { color: var(--ink-2); }
+    .option .btn { align-self: flex-start; margin-top: auto; }
+
+    .note { display: flex; gap: 14px; align-items: flex-start; margin: 32px 0 0; padding: 18px 22px; border-radius: var(--r); background: var(--white); border: 1px dashed #cfced6; color: var(--ink-2); font-size: .975rem; }
+    .note .i { color: var(--red); width: 22px; height: 22px; margin-top: 2px; }
+
+    .next { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin: 40px 0 24px; padding: 34px 38px; border-radius: var(--r-lg); background: var(--ink); color: #fff; }
+    .next h2 { font-size: 1.6rem; margin-bottom: 6px; }
+    .next p { color: rgb(255 255 255 / 72%); }
+
+    @media (max-width: 860px) {
+      .steps, .options { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .hero { padding: 40px 0 28px; }
+      .option-body { padding: 22px 20px 24px; }
+      .shots { padding: 16px 16px 0; }
+      .shot-mob { right: 16px; }
+      .next { padding: 26px 22px; }
+      .next .btn { width: 100%; }
+    }
+  </style>
 </head>
-<body class="has-mobile-bar">
-  <a class="skip-link" href="#main">Zum Inhalt springen</a>
-
+<body>
   <!-- Icons: Tabler Icons (MIT), https://tabler.io/icons -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
-  <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M15 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M5 17h-2v-6l2 -5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5"/></symbol>
-  <symbol id="i-motorbike" viewBox="0 0 24 24"><path d="M2 16a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M16 16a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M7.5 14h5l4 -4h-10.5m1.5 4l4 -4"/><path d="M13 6h2l1.5 3l2 4"/></symbol>
-  <symbol id="i-caravan" viewBox="0 0 24 24"><path d="M7 18a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M11 18h7a2 2 0 0 0 2 -2v-7a2 2 0 0 0 -2 -2h-9.5a5.5 5.5 0 0 0 -5.5 5.5v3.5a2 2 0 0 0 2 2h2"/><path d="M8 7l7 -3l1 3"/><path d="M13 11.5a.5 .5 0 0 1 .5 -.5h2a.5 .5 0 0 1 .5 .5v2a.5 .5 0 0 1 -.5 .5h-2a.5 .5 0 0 1 -.5 -.5l0 -2"/><path d="M20 16h2"/></symbol>
-  <symbol id="i-book" viewBox="0 0 24 24"><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"/><path d="M3 6l0 13"/><path d="M12 6l0 13"/><path d="M21 6l0 13"/></symbol>
-  <symbol id="i-chalkboard-teacher" viewBox="0 0 24 24"><path d="M8 19h-3a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v11a1 1 0 0 1 -1 1"/><path d="M12 14a2 2 0 1 0 4.001 -.001a2 2 0 0 0 -4.001 .001"/><path d="M17 19a2 2 0 0 0 -2 -2h-2a2 2 0 0 0 -2 2"/></symbol>
-  <symbol id="i-traffic-cone" viewBox="0 0 24 24"><path d="M4 20l16 0"/><path d="M9.4 10l5.2 0"/><path d="M7.8 15l8.4 0"/><path d="M6 20l5 -15h2l5 15"/></symbol>
-  <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0"/></symbol>
-  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"/></symbol>
-  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10"/><path d="M3 7l9 6l9 -6"/></symbol>
-  <symbol id="i-cash" viewBox="0 0 24 24"><path d="M7 15h-3a1 1 0 0 1 -1 -1v-8a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v3"/><path d="M7 10a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1l0 -8"/><path d="M12 14a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/></symbol>
-  <symbol id="i-license" viewBox="0 0 24 24"><path d="M15 21h-9a3 3 0 0 1 -3 -3v-1h10v2a2 2 0 0 0 4 0v-14a2 2 0 1 1 2 2h-2m2 -4h-11a3 3 0 0 0 -3 3v11"/><path d="M9 7l4 0"/><path d="M9 11l4 0"/></symbol>
-  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12l14 0"/><path d="M13 18l6 -6"/><path d="M13 6l6 6"/></symbol>
-  <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M17 7l-10 10"/><path d="M8 7l9 0l0 9"/></symbol>
-  <symbol id="i-menu-2" viewBox="0 0 24 24"><path d="M4 6l16 0"/><path d="M4 12l16 0"/><path d="M4 18l16 0"/></symbol>
-  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6l-12 12"/><path d="M6 6l12 12"/></symbol>
-  <symbol id="i-info-circle" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M12 9h.01"/><path d="M11 12h1v4h1"/></symbol>
-  <symbol id="i-calculator" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -14"/><path d="M8 8a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1v1a1 1 0 0 1 -1 1h-6a1 1 0 0 1 -1 -1l0 -1"/><path d="M8 14l0 .01"/><path d="M12 14l0 .01"/><path d="M16 14l0 .01"/><path d="M8 17l0 .01"/><path d="M12 17l0 .01"/><path d="M16 17l0 .01"/></symbol>
-  <symbol id="i-helmet" viewBox="0 0 24 24"><path d="M12 4a9 9 0 0 1 5.656 16h-11.312a9 9 0 0 1 5.656 -16"/><path d="M20 9h-8.8a1 1 0 0 0 -.968 1.246c.507 2 1.596 3.418 3.268 4.254c2 1 4.333 1.5 7 1.5"/></symbol>
-  <symbol id="i-file-text" viewBox="0 0 24 24"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 9l1 0"/><path d="M9 13l6 0"/><path d="M9 17l6 0"/></symbol>
-  <symbol id="i-device-mobile" viewBox="0 0 24 24"><path d="M6 5a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-14"/><path d="M11 4h2"/><path d="M12 17v.01"/></symbol>
-  <symbol id="i-road" viewBox="0 0 24 24"><path d="M4 19l4 -14"/><path d="M16 5l4 14"/><path d="M12 8v-2"/><path d="M12 13v-2"/><path d="M12 18v-2"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12l14 0"/><path d="M13 18l6 -6"/><path d="M13 6l6 6"/></symbol>
+    <symbol id="i-info-circle" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M12 9h.01"/><path d="M11 12h1v4h1"/></symbol>
   </svg>
 
-  <header class="site-header" id="top">
-    <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="Fahrschule Kurmann, zum Seitenanfang">
-        <img src="assets/img/logo.png" alt="Fahrschule Kurmann Sempach Sursee" width="450" height="124">
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="top-brand" href="./">
+        <img src="assets/img/logo.png" alt="Fahrschule Kurmann" width="450" height="124">
+        <span>Neue Website</span>
       </a>
-
-      <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
-        <ul>
-          <li><a href="#angebot">Angebot</a></li>
-          <li><a href="#ablauf">Weg zum Billett</a></li>
-          <li><a href="#motorrad">Motorrad</a></li>
-          <li><a href="#kurse">Kurse</a></li>
-          <li><a href="#preise">Preise</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#kontakt">Kontakt</a></li>
-        </ul>
-        <a class="btn btn-primary nav-cta" href="tel:+41797611633">
-          <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
-          079 761 16 33
-        </a>
+      <nav class="top-links" aria-label="Designvorschläge">
+        <a href="design-a/">Design A</a>
+        <a href="design-b/">Design B</a>
+        <a href="wunschliste/">Wunschliste</a>
       </nav>
-
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Menü öffnen">
-        <svg class="icon icon-open" aria-hidden="true"><use href="#i-menu-2"/></svg>
-        <svg class="icon icon-close" aria-hidden="true"><use href="#i-x"/></svg>
-      </button>
     </div>
   </header>
 
-  <main id="main">
+  <main class="wrap">
+    <div class="hero">
+      <p class="kicker">Designvorschläge</p>
+      <h1>Zwei Designs für Ihre neue Website</h1>
+      <p>Ich habe für die Startseite der Fahrschule Kurmann zwei unterschiedliche Designs entworfen. Schauen Sie sich beide in Ruhe an, am besten auch auf dem Handy. Danach wählen Sie in der Wunschliste Ihr Lieblingsdesign und die gewünschten Funktionen.</p>
+    </div>
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Auto · Motorrad · Roller</p>
-          <h1>Fahren lernen in Sempach und <span class="swoosh">Sursee</span>.</h1>
-          <p class="lead">Vom Nothelferkurs bis zur bestandenen Prüfung: Wir begleiten dich persönlich und Schritt für Schritt zu deinem Billett.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary btn-lg" href="#kontakt">
-              Fahrstunde anfragen
-              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-            </a>
-            <a class="btn btn-ghost btn-lg" href="#ablauf">So läufts ab</a>
-          </div>
-          <ul class="hero-facts">
-            <li><strong>ab 17</strong><span>Lernfahrausweis Auto</span></li>
-            <li><strong>ab 15</strong><span>Roller bis 45 km/h</span></li>
-            <li><strong>45 Min.</strong><span>pro Fahrlektion</span></li>
-          </ul>
-        </div>
+    <ol class="steps">
+      <li><span>1</span><div><strong>Designs ansehen</strong><small>Beide Startseiten anklicken und durchscrollen</small></div></li>
+      <li><span>2</span><div><strong>Wunschliste ausfüllen</strong><small>Design, Seiten und Funktionen wählen</small></div></li>
+      <li><span>3</span><div><strong>Ganze Website entsteht</strong><small>Ich setze alle Seiten im gewählten Design um</small></div></li>
+    </ol>
 
-        <div class="hero-media">
-          <img class="hero-img"
-               src="assets/img/hero-auto.webp"
-               srcset="assets/img/hero-auto-800.webp 800w, assets/img/hero-auto.webp 1400w"
-               sizes="(max-width: 960px) 100vw, 560px"
-               width="1400" height="1050"
-               alt="Weisses Fahrschulauto der Fahrschule Kurmann mit L-Schild auf einer Landstrasse"
-               fetchpriority="high">
-          <div class="l-plate" aria-hidden="true">L</div>
-          <div class="hero-badge">
-            <span class="hero-badge-label">1 Fahrlektion Auto</span>
-            <strong>CHF 90.–</strong>
-            <span class="hero-badge-sub">45 Minuten</span>
-          </div>
-          <div class="hero-pill">
-            <svg class="icon" aria-hidden="true"><use href="#i-cash"/></svg>
-            Bar, Twint oder Rechnung
-          </div>
+    <div class="options">
+      <article class="option">
+        <a class="shots" href="design-a/" aria-label="Design A ansehen">
+          <img class="shot-desk" src="assets/img/vorschau-a.webp" width="960" height="600" alt="Startseite Design A am Computer">
+          <img class="shot-mob" src="assets/img/vorschau-a-mobil.webp" width="390" height="780" alt="Startseite Design A auf dem Handy">
+        </a>
+        <div class="option-body">
+          <span class="option-tag">Design A</span>
+          <h2>Klar und freundlich</h2>
+          <p>Hell, warm und übersichtlich. Runde Formen, viel Weissraum und das Rot aus Ihrem Logo als Akzent. Wirkt nahbar und schafft Vertrauen, auch bei Eltern.</p>
+          <ul class="chips"><li>Hell</li><li>Freundlich</li><li>Übersichtlich</li></ul>
+          <a class="btn btn-red" href="design-a/">Design A ansehen <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
         </div>
+      </article>
+
+      <article class="option">
+        <a class="shots" href="design-b/" aria-label="Design B ansehen">
+          <img class="shot-desk" src="assets/img/vorschau-b.webp" width="960" height="600" alt="Startseite Design B am Computer">
+          <img class="shot-mob" src="assets/img/vorschau-b-mobil.webp" width="390" height="780" alt="Startseite Design B auf dem Handy">
+        </a>
+        <div class="option-body">
+          <span class="option-tag">Design B</span>
+          <h2>Sportlich und markant</h2>
+          <p>Dunkel, kraftvoll und modern. Grosse Schrift, ein Foto über die ganze Breite und Strassenmarkierungen als Erkennungszeichen. Wirkt dynamisch und spricht junge Fahrschüler an.</p>
+          <ul class="chips"><li>Dunkel</li><li>Dynamisch</li><li>Auffällig</li></ul>
+          <a class="btn btn-dark" href="design-b/">Design B ansehen <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        </div>
+      </article>
+    </div>
+
+    <p class="note">
+      <svg class="i" aria-hidden="true"><use href="#i-info-circle"/></svg>
+      <span>Es handelt sich um Entwürfe der Startseite. Menüpunkte wie Auto oder Preise werden nach der Designwahl als eigene Seiten umgesetzt. Texte, Preise und Fotos stammen von Ihrer bisherigen Website.</span>
+    </p>
+
+    <div class="next">
+      <div>
+        <h2>Gefällt Ihnen eines der Designs?</h2>
+        <p>In der Wunschliste wählen Sie Design und Funktionen, der Preis rechnet automatisch mit.</p>
       </div>
-    </section>
-
-    <!-- Angebot -->
-    <section class="section" id="angebot">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="kicker">Angebot</p>
-          <h2>Alles für deinen Führerausweis</h2>
-          <p>Ob erstes Auto, Roller mit 15 oder das grosse Motorrad: Fahrunterricht, Kurse und Theorie bekommst du bei uns aus einer Hand.</p>
-        </div>
-
-        <div class="offer-grid">
-          <a class="offer-card reveal" href="#ablauf" data-tab-target="auto">
-            <span class="offer-icon"><svg class="icon" aria-hidden="true"><use href="#i-car"/></svg></span>
-            <span class="offer-cat">Kategorie B</span>
-            <h3>Auto</h3>
-            <p>Fahrstunden ab 17 Jahren und Begleitung durch die 12-monatige Lernphase bis zur Prüfung.</p>
-            <span class="offer-link">Zum Ablauf <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
-          </a>
-          <a class="offer-card reveal" href="#motorrad">
-            <span class="offer-icon"><svg class="icon" aria-hidden="true"><use href="#i-motorbike"/></svg></span>
-            <span class="offer-cat">Kategorie A1 und A</span>
-            <h3>Motorrad und Roller</h3>
-            <p>Grundkurse, Einzelunterricht und Prüfungsvorbereitung für Roller und Motorrad ab 15 Jahren.</p>
-            <span class="offer-link">Kategorien ansehen <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
-          </a>
-          <a class="offer-card reveal" href="#preise">
-            <span class="offer-icon"><svg class="icon" aria-hidden="true"><use href="#i-caravan"/></svg></span>
-            <span class="offer-cat">Kategorie BE</span>
-            <h3>Anhänger</h3>
-            <p>Fahrlektionen mit Anhängerzug, damit du auch mit Wohnwagen oder Pferdeanhänger sicher unterwegs bist.</p>
-            <span class="offer-link">Zu den Preisen <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
-          </a>
-          <a class="offer-card reveal" href="#kurse">
-            <span class="offer-icon"><svg class="icon" aria-hidden="true"><use href="#i-chalkboard-teacher"/></svg></span>
-            <span class="offer-cat">VKU · WAB · Training</span>
-            <h3>Kurse</h3>
-            <p>Verkehrskunde in Sempach oder Emmen, WAB-Kurs in Ruswil und Manövertraining in Ballwil.</p>
-            <span class="offer-link">Zu den Kursen <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Weg zum Billett -->
-    <section class="section section-sand" id="ablauf">
-      <div class="container ablauf-grid">
-        <div class="ablauf-intro">
-          <div class="reveal">
-            <p class="kicker">Weg zum Billett</p>
-            <h2>Schritt für Schritt zum Führerausweis</h2>
-            <p>Hier siehst du, was wann zu tun ist. Das Gesuchsformular für den Lernfahrausweis bekommst du übrigens auch direkt bei uns.</p>
-          </div>
-
-          <div class="tabs" role="tablist" aria-label="Fahrzeug wählen">
-            <button class="tab" type="button" role="tab" id="tab-auto" aria-controls="panel-auto" aria-selected="true">
-              <svg class="icon" aria-hidden="true"><use href="#i-car"/></svg> Auto
-            </button>
-            <button class="tab" type="button" role="tab" id="tab-moto" aria-controls="panel-moto" aria-selected="false" tabindex="-1">
-              <svg class="icon" aria-hidden="true"><use href="#i-motorbike"/></svg> Motorrad und Roller
-            </button>
-          </div>
-
-          <div class="help-card reveal">
-            <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
-            <div>
-              <strong>Fragen zum Ablauf?</strong>
-              <p>Ruf Andy an: <a href="tel:+41797611633">079 761 16 33</a></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="ablauf-steps">
-          <div class="tab-panel" id="panel-auto" role="tabpanel" aria-labelledby="tab-auto">
-            <h3 class="panel-title">Auto</h3>
-            <ol class="road">
-              <li class="road-step reveal">
-                <span class="road-num" aria-hidden="true">1</span>
-                <div class="road-body">
-                  <h4>Nothelferkurs</h4>
-                  <p>Besuche den Nothelferkurs, zum Beispiel beim <a href="https://www.samariterverein-sempach.ch/kurse/kursdaten-und-anmeldung/" target="_blank" rel="noopener">Samariterverein Sempach</a>. Den Ausweis brauchst du für dein Gesuch.</p>
-                </div>
-              </li>
-              <li class="road-step reveal">
-                <span class="road-num" aria-hidden="true">2</span>
-                <div class="road-body">
-                  <h4>Lernfahrausweis beantragen</h4>
-                  <p>Fülle das <a href="https://strassenverkehrsamt.lu.ch/Strassenverkehr/online_schalter/formulare" target="_blank" rel="noopener">Gesuchsformular (Formular 12)</a> aus und unterschreibe es. Bis 18 unterschreiben auch deine Eltern. Bring es mit dem Nothelferausweis persönlich zur Einwohnergemeinde, frühestens 6 Wochen vor deinem 17. Geburtstag.</p>
-                </div>
-              </li>
-              <li class="road-step reveal">
-                <span class="road-num" aria-hidden="true">3</span>
-                <div class="road-body">
-                  <h4>Theorie lernen</h4>
-                  <p>Lerne zuhause mit unserem Theorie-Lernprogramm für CHF 50.–. Persönlichen Theorieunterricht gibts auf Anfrage.</p>
-                </div>
-              </li>
-              <li class="road-step reveal">
-                <span class="road-num" aria-hidden="true">4</span>
-                <div class="road-body">
-                  <h4>Theorieprüfung</h4>
-                  <p>Die Theorieprüfung kannst du frühestens 1 Monat vor deinem 17. Geburtstag ablegen. Rund 3 Tage nach dem Bestehen erhältst du den Lernfahrausweis.</p>
-                </div>
-              </li>
-              <li class="road-step reveal">
-                <span class="road-num" aria-hidden="true">5</span>
-                <div class="road-body">
-                  <h4>Fahrstunden</h4>
-                  <p>Mit 17 und dem Lernfahrausweis in der Tasche gehts los. Eine Fahrlektion dauert 45 Minuten.</p>
-                </div>
-              </li>
-              <li class="road-step reveal">
-                <span class="road-num" aria-hidden="true">6</span>
-                <div class="road-body">
-                  <h4>Verkehrskundekurs VKU</h4>
-                  <p>Während der Fahrausbildung besuchst du den obligatorischen <a href="#kurse">VKU</a>: 8 Lektionen in unserem Theorielokal im Schulhaus Felsenegg in Sempach.</p>
-                </div>
-              </li>
-              <li class="road-step road-goal reveal">
-                <span class="road-num" aria-hidden="true"><svg class="icon"><use href="#i-license"/></svg></span>
-                <div class="road-body">
-                  <h4>Praktische Prüfung</h4>
-                  <p>Bist du unter 20, kannst du nach 12 Monaten Lernphase zur Prüfung. Danach erhältst du den Führerausweis auf Probe für 3 Jahre.</p>
-                </div>
-              </li>
-            </ol>
-
-            <p class="road-note reveal">
-              <svg class="icon" aria-hidden="true"><use href="#i-info-circle"/></svg>
-              <span><strong>Wichtig:</strong> Der eintägige <a href="#kurse">WAB-Kurs</a> muss im ersten Jahr nach der bestandenen Prüfung absolviert werden.</span>
-            </p>
-
-            <div class="phase-card reveal">
-              <p class="kicker kicker-light">Unter 20 Jahren</p>
-              <h4>So nutzt du die 12-monatige Lernphase</h4>
-              <p>Wer mit 17 bis 20 Jahren den Lernfahrausweis macht, muss 12 Monate üben, bevor die praktische Prüfung möglich ist. Unsere Empfehlung:</p>
-              <ol class="phase-list">
-                <li>Ab dem 17. Geburtstag 1 bis 2 Fahrlektionen pro Woche</li>
-                <li>Verkehrskundekurs VKU besuchen</li>
-                <li>Sobald du dich sicher fühlst, mit einer Begleitperson üben</li>
-                <li>Rund 2 Monate vor Ende der Lernphase Fahrstunden abmachen (Standortbestimmung)</li>
-                <li>Prüfungsvorbereitung mit dem Fahrlehrer</li>
-                <li>Praktische Fahrprüfung</li>
-              </ol>
-              <p class="phase-foot">Ab 20 Jahren entfällt die 12-monatige Lernphase.</p>
-            </div>
-          </div>
-
-          <div class="tab-panel" id="panel-moto" role="tabpanel" aria-labelledby="tab-moto">
-            <h3 class="panel-title">Motorrad und Roller</h3>
-            <ol class="road">
-              <li class="road-step reveal">
-                <span class="road-num" aria-hidden="true">1</span>
-                <div class="road-body">
-                  <h4>Nothelferkurs</h4>
-                  <p>Besuche den Nothelferkurs, zum Beispiel beim <a href="https://www.samariterverein-sempach.ch/kurse/kursdaten-und-anmeldung/" target="_blank" rel="noopener">Samariterverein Sempach</a>.</p>
-                </div>
-              </li>
-              <li class="road-step reveal">
-                <span class="road-num" aria-hidden="true">2</span>
-                <div class="road-body">
-                  <h4>Lernfahrausweis beantragen</h4>
-                  <p>Fülle das <a href="https://strassenverkehrsamt.lu.ch/Strassenverkehr/online_schalter/formulare" target="_blank" rel="noopener">Gesuchsformular (Formular 12)</a> aus und unterschreibe es. Bis 18 unterschreiben auch deine Eltern. Bring es mit dem Nothelferausweis persönlich zur Einwohnergemeinde.</p>
-                </div>
-              </li>
-              <li class="road-step reveal">
-                <span class="road-num" aria-hidden="true">3</span>
-                <div class="road-body">
-                  <h4>Theorie lernen</h4>
-                  <p>Lerne zuhause mit unserem Theorie-Lernprogramm für CHF 50.–. Persönlichen Theorieunterricht gibts auf Anfrage.</p>
-                </div>
-              </li>
-              <li class="road-step reveal">
-                <span class="road-num" aria-hidden="true">4</span>
-                <div class="road-body">
-                  <h4>Theorieprüfung</h4>
-                  <p>Möglich ab 1 Monat vor dem Mindestalter. Danach erhältst du den Lernfahrausweis. Er gilt zuerst 4 Monate und wird nach dem Grundkurs um 12 Monate verlängert.</p>
-                </div>
-              </li>
-              <li class="road-step reveal">
-                <span class="road-num" aria-hidden="true">5</span>
-                <div class="road-body">
-                  <h4>Grundkurs</h4>
-                  <p>Der Grundkurs besteht aus drei Teilen und findet auf den Übungsplätzen in Sursee, Ballwil oder Emmen statt.</p>
-                </div>
-              </li>
-              <li class="road-step reveal">
-                <span class="road-num" aria-hidden="true">6</span>
-                <div class="road-body">
-                  <h4>Verkehrskundekurs VKU</h4>
-                  <p>Im Verlauf der Ausbildung besuchst du den obligatorischen <a href="#kurse">VKU</a> mit 8 Lektionen im Schulhaus Felsenegg in Sempach.</p>
-                </div>
-              </li>
-              <li class="road-step road-goal reveal">
-                <span class="road-num" aria-hidden="true"><svg class="icon"><use href="#i-license"/></svg></span>
-                <div class="road-body">
-                  <h4>Praktische Prüfung</h4>
-                  <p>Mit gezielter Prüfungsvorbereitung, einzeln oder in der Kleingruppe. Und natürlich mit Erfolg!</p>
-                </div>
-              </li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Motorrad -->
-    <section class="section" id="motorrad">
-      <div class="container">
-        <div class="moto-top">
-          <div class="moto-copy reveal">
-            <p class="kicker">Motorrad und Roller</p>
-            <h2>Zwei Räder, volle Kontrolle</h2>
-            <p>Im Grundkurs übst du in der Gruppe die wichtigsten Manöver auf dem Übungsplatz. Danach bereiten wir dich gezielt auf die Prüfung vor, einzeln oder in der Kleingruppe.</p>
-            <ul class="moto-stats">
-              <li><strong>3 Teile</strong><span>Grundkurs, je CHF 160.–</span></li>
-              <li><strong>ab CHF 35.–</strong><span>Prüfungsvorbereitung in der 3er-Gruppe</span></li>
-              <li><strong>jeden Mittwoch</strong><span>Manövertraining in Ballwil</span></li>
-            </ul>
-          </div>
-          <figure class="moto-figure reveal">
-            <img src="assets/img/grundkurs.webp" width="1024" height="768" loading="lazy"
-                 alt="Teilnehmende eines Motorrad-Grundkurses mit dem Fahrlehrer auf dem Übungsplatz">
-          </figure>
-        </div>
-
-        <h3 class="sub-head reveal">Welche Kategorie passt zu dir?</h3>
-        <div class="cat-grid">
-          <article class="cat-card reveal">
-            <div class="cat-img"><img src="assets/img/kat-roller-45.webp" width="800" height="600" loading="lazy" alt="Roller bis 50 cm³"></div>
-            <div class="cat-body">
-              <div class="cat-head"><span class="cat-badge">A1</span><span class="cat-age">ab 15 Jahren</span></div>
-              <h4>Roller bis 45 km/h</h4>
-              <ul class="cat-specs">
-                <li>bis 50 cm³</li>
-                <li>max. 4 kW</li>
-                <li>max. 45 km/h</li>
-              </ul>
-              <a class="btn btn-outline btn-sm" href="#kontakt" data-topic="Motorrad/Roller: Kategorie A1 bis 45 km/h">Jetzt anmelden</a>
-            </div>
-          </article>
-          <article class="cat-card reveal">
-            <div class="cat-img"><img src="assets/img/kat-a1-125.webp" width="800" height="600" loading="lazy" alt="Roller bis 125 cm³"></div>
-            <div class="cat-body">
-              <div class="cat-head"><span class="cat-badge">A1</span><span class="cat-age">ab 16 Jahren</span></div>
-              <h4>Roller und Motorrad bis 125 cm³</h4>
-              <ul class="cat-specs">
-                <li>bis 125 cm³</li>
-                <li>max. 11 kW</li>
-              </ul>
-              <a class="btn btn-outline btn-sm" href="#kontakt" data-topic="Motorrad/Roller: Kategorie A1 bis 125 cm³">Jetzt anmelden</a>
-            </div>
-          </article>
-          <article class="cat-card reveal">
-            <div class="cat-img"><img src="assets/img/kat-a-35kw.webp" width="800" height="600" loading="lazy" alt="Motorrad mit maximal 35 kW"></div>
-            <div class="cat-body">
-              <div class="cat-head"><span class="cat-badge">A</span><span class="cat-age">ab 18 Jahren</span></div>
-              <h4>Motorrad bis 35 kW</h4>
-              <ul class="cat-specs">
-                <li>max. 35 kW</li>
-                <li>weniger als 0.20 kW/kg</li>
-              </ul>
-              <a class="btn btn-outline btn-sm" href="#kontakt" data-topic="Motorrad: Kategorie A bis 35 kW">Jetzt anmelden</a>
-            </div>
-          </article>
-          <article class="cat-card reveal">
-            <div class="cat-img"><img src="assets/img/kat-a.webp" width="800" height="600" loading="lazy" alt="Sportliches Motorrad über 35 kW"></div>
-            <div class="cat-body">
-              <div class="cat-head"><span class="cat-badge">A</span><span class="cat-age">ab 20 Jahren</span></div>
-              <h4>Motorrad unbeschränkt</h4>
-              <ul class="cat-specs">
-                <li>mehr als 35 kW oder mehr als 0.20 kW/kg</li>
-                <li>Direkteinstieg nicht möglich</li>
-              </ul>
-              <a class="btn btn-outline btn-sm" href="#kontakt" data-topic="Motorrad: Kategorie A unbeschränkt">Jetzt anmelden</a>
-            </div>
-          </article>
-        </div>
-        <p class="cat-more reveal">
-          <svg class="icon" aria-hidden="true"><use href="#i-info-circle"/></svg>
-          <span>Alle Ausweiskategorien im Detail findest du auf <a href="https://fuehrerausweise.ch/ausweiskategorien/" target="_blank" rel="noopener">fuehrerausweise.ch</a>.</span>
-        </p>
-      </div>
-    </section>
-
-    <!-- Kurse -->
-    <section class="section section-sand" id="kurse">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="kicker">Kurse</p>
-          <h2>Kurse rund um deine Ausbildung</h2>
-          <p>Pflichtkurse und Training: Hier findest du alles zu VKU, WAB und unserem Manövertraining.</p>
-        </div>
-
-        <div class="course-grid">
-          <article class="course-card reveal">
-            <img class="course-img" src="assets/img/vku.webp" width="1200" height="724" loading="lazy" alt="Unterlagen im Theorielokal für den Verkehrskundekurs">
-            <div class="course-body">
-              <span class="course-tag">Pflicht für Auto und Motorrad</span>
-              <h3>Verkehrskunde VKU</h3>
-              <p>Der obligatorische Verkehrskundekurs findet in unserem Theorielokal in Sempach statt.</p>
-              <dl class="facts">
-                <div><dt>Dauer</dt><dd>8 Lektionen an 4 Abenden</dd></div>
-                <div><dt>Zeit</dt><dd>19.15 bis ca. 21.15 Uhr</dd></div>
-                <div><dt>Ort</dt><dd>Schulhaus Felsenegg, Sempach</dd></div>
-                <div><dt>Preis</dt><dd>CHF 250.– inkl. Lehrbücher</dd></div>
-              </dl>
-              <p class="course-note">Auch in Emmen möglich, als Wochenkurs (Mo bis Do) oder Wochenendkurs (Sa und So).</p>
-              <a class="btn btn-primary btn-sm" href="#kontakt" data-topic="VKU Verkehrskunde: Kursdaten">Kursdaten anfragen</a>
-            </div>
-          </article>
-
-          <article class="course-card reveal">
-            <img class="course-img" src="assets/img/wab.webp" width="600" height="300" loading="lazy" alt="Auto beim Ausweichmanöver auf dem WAB-Trainingsgelände">
-            <div class="course-body">
-              <span class="course-tag">Pflicht nach der Prüfung</span>
-              <h3>WAB-Kurs</h3>
-              <p>Für alle Neulenkerinnen und Neulenker ist ein Kurstag obligatorisch. Er muss im ersten Jahr nach der Prüfung absolviert werden.</p>
-              <dl class="facts">
-                <div><dt>Dauer</dt><dd>1 Kurstag</dd></div>
-                <div><dt>Ort</dt><dd>WAB Zentralschweiz, Ruswil</dd></div>
-                <div><dt>Preis</dt><dd>Mo bis Fr: CHF 295.–<br>Samstag: CHF 315.–</dd></div>
-              </dl>
-              <p class="course-note">Bei uns ausgebildet? Dann erhältst du einen WAB-Gutschein. Gib ihn am Kurstag dem Moderator ab.</p>
-              <div class="bonus">
-                <strong>CHF 20.– für dich</strong>
-                <p>Melde auch Kolleginnen und Kollegen über uns an: Bei der Anmeldung unter Fahrschule «Fahrschule Kurmann Sempach» wählen und uns per E-Mail oder SMS Bescheid geben. Pro Person erhältst du nach dem WAB-Abschluss CHF 20.–.</p>
-              </div>
-              <a class="btn btn-primary btn-sm" href="https://www.wab-luzern.ch/wab" target="_blank" rel="noopener">
-                Zur WAB-Anmeldung
-                <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
-              </a>
-            </div>
-          </article>
-
-          <article class="course-card reveal">
-            <img class="course-img" src="assets/img/manoever.webp" width="800" height="900" loading="lazy" alt="Motorräder beim Manövertraining zwischen Pylonen">
-            <div class="course-body">
-              <span class="course-tag">Motorrad</span>
-              <h3>Manövertraining</h3>
-              <p>Üben, üben, üben: Trainiere die Prüfungsmanöver mit dem Fahrlehrer, ganz ohne Anmeldung.</p>
-              <dl class="facts">
-                <div><dt>Wann</dt><dd>Jeden Mittwoch, 18.30 bis 20.00 Uhr</dd></div>
-                <div><dt>Ort</dt><dd>Übungsplatz Ballwil</dd></div>
-                <div><dt>Preis</dt><dd>CHF 30.–</dd></div>
-                <div><dt>Anmeldung</dt><dd>nicht nötig</dd></div>
-              </dl>
-              <a class="btn btn-primary btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=47.1474453%2C8.3196043" target="_blank" rel="noopener">
-                Route nach Ballwil
-                <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
-              </a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Preise -->
-    <section class="section" id="preise">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="kicker">Preise</p>
-          <h2>Faire Preise, klar aufgelistet</h2>
-          <p>Alle Preise in Schweizer Franken. Eine Fahrlektion dauert 45 Minuten.</p>
-        </div>
-
-        <div class="price-layout">
-          <div class="price-grid">
-            <div class="price-card reveal">
-              <h3><svg class="icon" aria-hidden="true"><use href="#i-car"/></svg> Auto <span>Kat. B</span></h3>
-              <table class="price-table">
-                <tr><th scope="row">1 Lektion praktischer Fahrunterricht<small>45 Minuten</small></th><td>90.–</td></tr>
-                <tr><th scope="row">Administration und Versicherungsanteil</th><td>80.–</td></tr>
-              </table>
-            </div>
-
-            <div class="price-card reveal">
-              <h3><svg class="icon" aria-hidden="true"><use href="#i-caravan"/></svg> Anhänger <span>Kat. BE</span></h3>
-              <table class="price-table">
-                <tr><th scope="row">1 Lektion mit Anhängerzug<small>eigener Anhänger: CHF 10.–</small></th><td>110.–</td></tr>
-                <tr><th scope="row">Administration und Versicherungsanteil</th><td>80.–</td></tr>
-              </table>
-            </div>
-
-            <div class="price-card reveal">
-              <h3><svg class="icon" aria-hidden="true"><use href="#i-motorbike"/></svg> Motorrad <span>Grundkurs</span></h3>
-              <table class="price-table">
-                <tr><th scope="row">Grundkurs I</th><td>160.–</td></tr>
-                <tr><th scope="row">Grundkurs II</th><td>160.–</td></tr>
-                <tr><th scope="row">Grundkurs III</th><td>160.–</td></tr>
-              </table>
-            </div>
-
-            <div class="price-card reveal">
-              <h3><svg class="icon" aria-hidden="true"><use href="#i-helmet"/></svg> Motorrad <span>Prüfungsvorbereitung</span></h3>
-              <table class="price-table">
-                <tr><th scope="row">Einzelunterricht<small>1 Fahrer</small></th><td>90.–</td></tr>
-                <tr><th scope="row">2er-Gruppe<small>2 Fahrer</small></th><td>45.–</td></tr>
-                <tr><th scope="row">3er-Gruppe<small>3 Fahrer</small></th><td>35.–</td></tr>
-                <tr><th scope="row">Manövertraining Ballwil</th><td>30.–</td></tr>
-              </table>
-            </div>
-
-            <div class="price-card reveal">
-              <h3><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> Theorie</h3>
-              <table class="price-table">
-                <tr><th scope="row">Theorie-Lernprogramm für zuhause</th><td>50.–</td></tr>
-                <tr><th scope="row">Einzelunterricht pro Lektion</th><td>60.–</td></tr>
-                <tr><th scope="row">Theoriekurse</th><td class="on-request">auf Anfrage</td></tr>
-                <tr><th scope="row">Diverses Lehrmaterial</th><td class="on-request">auf Anfrage</td></tr>
-              </table>
-            </div>
-
-            <div class="price-card reveal">
-              <h3><svg class="icon" aria-hidden="true"><use href="#i-chalkboard-teacher"/></svg> Kurse <span>VKU und WAB</span></h3>
-              <table class="price-table">
-                <tr><th scope="row">VKU-Kurs inkl. Lehrbücher</th><td>250.–</td></tr>
-                <tr><th scope="row">WAB-Kurs Montag bis Freitag<small>inkl. Pausenkaffee und Gipfeli</small></th><td>295.–</td></tr>
-                <tr><th scope="row">WAB-Kurs Samstag<small>inkl. Pausenkaffee und Gipfeli</small></th><td>315.–</td></tr>
-              </table>
-            </div>
-          </div>
-
-          <aside class="price-side">
-            <div class="calc-card reveal" id="rechner">
-              <h3><svg class="icon" aria-hidden="true"><use href="#i-calculator"/></svg> Kostenrechner Auto</h3>
-              <p class="calc-intro">Schätze grob, was dein Auto-Billett bei uns kostet.</p>
-
-              <div class="calc-field">
-                <label for="calc-lessons">Anzahl Fahrlektionen</label>
-                <output id="calc-lessons-out" for="calc-lessons">20</output>
-              </div>
-              <input type="range" id="calc-lessons" min="1" max="60" step="1" value="20">
-
-              <label class="check"><input type="checkbox" id="calc-vku" checked> VKU-Kurs (CHF 250.–)</label>
-              <label class="check"><input type="checkbox" id="calc-theory" checked> Theorie-Lernprogramm (CHF 50.–)</label>
-
-              <dl class="calc-lines">
-                <div><dt>Fahrlektionen <span id="calc-lessons-calc">20 × 90.–</span></dt><dd id="calc-lessons-sum">1’800.–</dd></div>
-                <div><dt>Administration und Versicherung</dt><dd>80.–</dd></div>
-                <div id="calc-vku-line"><dt>VKU-Kurs</dt><dd>250.–</dd></div>
-                <div id="calc-theory-line"><dt>Theorie-Lernprogramm</dt><dd>50.–</dd></div>
-              </dl>
-              <div class="calc-total">
-                <span>Total geschätzt</span>
-                <strong id="calc-total">CHF 2’180.–</strong>
-              </div>
-              <p class="calc-hint">Wie viele Lektionen du brauchst, ist ganz individuell. Nicht enthalten: Nothelferkurs, Gebühren des Strassenverkehrsamts und WAB-Kurs.</p>
-            </div>
-
-            <div class="pay-card reveal">
-              <h3>So bezahlst du</h3>
-              <ul class="pay-chips">
-                <li><svg class="icon" aria-hidden="true"><use href="#i-cash"/></svg> Bar</li>
-                <li><svg class="icon" aria-hidden="true"><use href="#i-device-mobile"/></svg> Twint</li>
-                <li><svg class="icon" aria-hidden="true"><use href="#i-file-text"/></svg> Rechnung</li>
-              </ul>
-              <p>Wann du einzahlst, entscheidest du selbst. Nach der Prüfung erhältst du eine Endabrechnung mit der Anzahl Lektionen und dem bereits bezahlten Betrag.</p>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <!-- Team -->
-    <section class="section section-dark" id="team">
-      <div class="container team-grid">
-        <div class="team-intro reveal">
-          <p class="kicker kicker-light">Team</p>
-          <h2>Die Menschen hinter der Fahrschule</h2>
-          <p>Bei uns hast du feste Ansprechpersonen, vom ersten Anruf bis zur bestandenen Prüfung.</p>
-        </div>
-        <div class="team-cards">
-          <article class="person reveal">
-            <img class="person-photo" src="assets/img/andy-kurmann.webp" width="250" height="340" loading="lazy" alt="Porträt von Andy Kurmann">
-            <div class="person-body">
-              <h3>Andy Kurmann</h3>
-              <p class="person-role">Fahrlehrer Auto und Motorrad</p>
-              <a class="person-phone" href="tel:+41797611633"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> 079 761 16 33</a>
-            </div>
-          </article>
-          <article class="person reveal">
-            <div class="person-photo person-initials" aria-hidden="true">PK</div>
-            <div class="person-body">
-              <h3>Priska Kurmann</h3>
-              <p class="person-role">Administration, für alles hinter den Kulissen</p>
-              <a class="person-phone" href="tel:+41414670487"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> 041 467 04 87</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Standorte -->
-    <section class="section" id="standorte">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="kicker">Standorte</p>
-          <h2>Hier findest du uns</h2>
-          <p>Theorie in Sempach und Emmenbrücke, Grundkurse auf drei Übungsplätzen in der Region.</p>
-        </div>
-
-        <div class="place-grid">
-          <div class="place-group reveal">
-            <h3><svg class="icon" aria-hidden="true"><use href="#i-chalkboard-teacher"/></svg> Theorie und VKU</h3>
-            <ul>
-              <li>
-                <div><strong>Theorielokal Sempach</strong><span>Schulhaus Felsenegg, 6204 Sempach</span></div>
-                <a href="https://www.google.com/maps/search/?api=1&amp;query=47.1329153%2C8.1923827" target="_blank" rel="noopener" aria-label="Route zum Theorielokal Sempach">Route</a>
-              </li>
-              <li>
-                <div><strong>Theorielokal Emmenbrücke</strong><span>Fahrschulcenter Luzern, Bahnhofstrasse 12, 6020 Emmenbrücke</span></div>
-                <a href="https://www.google.com/maps/search/?api=1&amp;query=47.0701386%2C8.2830215" target="_blank" rel="noopener" aria-label="Route zum Theorielokal Emmenbrücke">Route</a>
-              </li>
-            </ul>
-          </div>
-          <div class="place-group reveal">
-            <h3><svg class="icon" aria-hidden="true"><use href="#i-traffic-cone"/></svg> Motorrad-Grundkurse</h3>
-            <ul>
-              <li>
-                <div><strong>Übungsplatz Sursee</strong><span>Grundkurse</span></div>
-                <a href="https://www.google.com/maps/search/?api=1&amp;query=47.1640434%2C8.1054352" target="_blank" rel="noopener" aria-label="Route zum Übungsplatz Sursee">Route</a>
-              </li>
-              <li>
-                <div><strong>Übungsplatz Ballwil</strong><span>Grundkurse und Manövertraining</span></div>
-                <a href="https://www.google.com/maps/search/?api=1&amp;query=47.1474453%2C8.3196043" target="_blank" rel="noopener" aria-label="Route zum Übungsplatz Ballwil">Route</a>
-              </li>
-              <li>
-                <div><strong>Emmen, Parkplatz Mooshüsli</strong><span>Grundkurse</span></div>
-                <a href="https://www.google.com/maps/search/?api=1&amp;query=47.0789562%2C8.2899176" target="_blank" rel="noopener" aria-label="Route zum Parkplatz Mooshüsli in Emmen">Route</a>
-              </li>
-            </ul>
-          </div>
-          <div class="place-group reveal">
-            <h3><svg class="icon" aria-hidden="true"><use href="#i-road"/></svg> WAB-Kurse</h3>
-            <ul>
-              <li>
-                <div><strong>WAB Zentralschweiz</strong><span>Ruswil</span></div>
-                <a href="https://www.google.com/maps/search/?api=1&amp;query=47.0800168%2C8.1164514" target="_blank" rel="noopener" aria-label="Route zum WAB-Kursort in Ruswil">Route</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Kontakt -->
-    <section class="section section-sand" id="kontakt">
-      <div class="container contact-grid">
-        <div class="contact-info reveal">
-          <p class="kicker">Kontakt</p>
-          <h2>Melde dich bei uns</h2>
-          <p>Schreib uns über das Formular oder ruf direkt an. Hörst du innert 48 Stunden nichts von uns, ruf uns bitte an.</p>
-
-          <ul class="contact-list">
-            <li>
-              <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-device-mobile"/></svg></span>
-              <div><span class="contact-label">Mobile Andy</span><a href="tel:+41797611633">079 761 16 33</a></div>
-            </li>
-            <li>
-              <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
-              <div><span class="contact-label">Telefon</span><a href="tel:+41414670487">041 467 04 87</a></div>
-            </li>
-            <li>
-              <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
-              <div><span class="contact-label">E-Mail</span><a data-mail href="#kontakt">fahrschule-kurmann [at] bluewin.ch</a></div>
-            </li>
-            <li>
-              <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg></span>
-              <div><span class="contact-label">Adresse</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Hubelmatt+21%2C+6204+Sempach" target="_blank" rel="noopener">Hubelmatt 21, 6204 Sempach</a></div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="form-card reveal">
-          <form class="contact-form" id="contact-form" novalidate>
-            <div class="field field-full">
-              <label for="f-topic">Worum gehts?</label>
-              <select id="f-topic" name="topic">
-                <option>Fahrstunden Auto</option>
-                <option>Motorrad/Roller: Kategorie A1 bis 45 km/h</option>
-                <option>Motorrad/Roller: Kategorie A1 bis 125 cm³</option>
-                <option>Motorrad: Kategorie A bis 35 kW</option>
-                <option>Motorrad: Kategorie A unbeschränkt</option>
-                <option>Anhänger Kategorie BE</option>
-                <option>VKU Verkehrskunde: Kursdaten</option>
-                <option>WAB-Kurs</option>
-                <option>Theorie</option>
-                <option>Allgemeine Frage</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="f-firstname">Vorname <span class="req" aria-hidden="true">*</span></label>
-              <input id="f-firstname" name="firstname" type="text" autocomplete="given-name" required>
-            </div>
-            <div class="field">
-              <label for="f-lastname">Name <span class="req" aria-hidden="true">*</span></label>
-              <input id="f-lastname" name="lastname" type="text" autocomplete="family-name" required>
-            </div>
-            <div class="field">
-              <label for="f-phone">Telefon <span class="req" aria-hidden="true">*</span></label>
-              <input id="f-phone" name="phone" type="tel" autocomplete="tel" required>
-            </div>
-            <div class="field">
-              <label for="f-email">E-Mail</label>
-              <input id="f-email" name="email" type="email" autocomplete="email">
-            </div>
-            <div class="field">
-              <label for="f-city">PLZ / Ort</label>
-              <input id="f-city" name="city" type="text" autocomplete="address-level2">
-            </div>
-            <div class="field">
-              <label for="f-birthday">Geburtsdatum</label>
-              <input id="f-birthday" name="birthday" type="date" autocomplete="bday">
-            </div>
-            <div class="field field-full">
-              <label for="f-reg">Reg.-Nummer <span class="optional">(falls vorhanden)</span></label>
-              <input id="f-reg" name="reg" type="text">
-            </div>
-            <div class="field field-full">
-              <label for="f-message">Nachricht</label>
-              <textarea id="f-message" name="message" rows="4" placeholder="Wann hast du Zeit? Hast du schon Fahrpraxis?"></textarea>
-            </div>
-            <div class="field-full form-actions">
-              <button class="btn btn-primary btn-lg" type="submit">
-                Nachricht senden
-                <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-              </button>
-              <p class="form-hint">Beim Senden öffnet sich dein E-Mail-Programm mit der fertigen Nachricht.</p>
-            </div>
-            <div class="form-status field-full" id="form-status" role="status" aria-live="polite" hidden></div>
-          </form>
-          <noscript>
-            <p class="form-noscript">Das Formular braucht JavaScript. Ruf uns einfach an oder schreib an fahrschule-kurmann [at] bluewin.ch.</p>
-          </noscript>
-        </div>
-      </div>
-    </section>
+      <a class="btn btn-red" href="wunschliste/">Zur Wunschliste <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+    </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <img src="assets/img/logo-hell.png" alt="Fahrschule Kurmann" width="450" height="124" loading="lazy">
-        <p>Fahrschule für Auto, Motorrad und Roller in Sempach und Sursee.</p>
-      </div>
-      <div>
-        <h3>Kontakt</h3>
-        <address>
-          Fahrschule Kurmann<br>
-          Andy Kurmann<br>
-          Hubelmatt 21<br>
-          CH-6204 Sempach LU
-        </address>
-        <p>
-          <a href="tel:+41414670487">041 467 04 87</a><br>
-          <a href="tel:+41797611633">079 761 16 33</a><br>
-          <a data-mail href="#kontakt">fahrschule-kurmann [at] bluewin.ch</a>
-        </p>
-      </div>
-      <div>
-        <h3>Seiten</h3>
-        <ul class="footer-links">
-          <li><a href="#ablauf">Weg zum Billett</a></li>
-          <li><a href="#motorrad">Motorrad und Roller</a></li>
-          <li><a href="#kurse">VKU und WAB</a></li>
-          <li><a href="#preise">Preise</a></li>
-          <li><a href="#standorte">Standorte</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Partner</h3>
-        <div class="partner-logos">
-          <a href="https://www.wab-luzern.ch/motorrad" target="_blank" rel="noopener" title="Moto-Driving-Team, WAB Motorradkurse">
-            <img src="assets/img/partner-mdt.png" alt="Moto-Driving-Team" width="144" height="101" loading="lazy">
-          </a>
-          <a href="https://www.wab-luzern.ch/wab" target="_blank" rel="noopener" title="WAB Luzern">
-            <img src="assets/img/partner-wab.png" alt="WAB Luzern" width="267" height="142" loading="lazy">
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <p>© <span data-year>2026</span> Fahrschule Kurmann, Sempach</p>
-      <nav aria-label="Rechtliches">
-        <a href="datenschutz.html">Datenschutz</a>
-        <a href="impressum.html">Impressum</a>
-      </nav>
+  <footer class="foot">
+    <div class="wrap foot-inner">
+      <span>Ein Vorschlag von Jonas Grüter</span>
+      <span>Oktober 2026</span>
     </div>
   </footer>
-
-  <div class="mobile-bar" aria-label="Schnellkontakt">
-    <a class="btn btn-ghost-dark" href="tel:+41797611633"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> Anrufen</a>
-    <a class="btn btn-primary" href="#kontakt"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg> Anfragen</a>
-  </div>
 </body>
 </html>
