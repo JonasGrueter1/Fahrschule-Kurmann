@@ -10,7 +10,7 @@ Reines HTML, CSS und JavaScript, ohne Baukasten und ohne Build-Schritt.
 index.html            Übersicht: beide Designs nebeneinander, Link zur Wunschliste
 design-a/             Design A «Klar und freundlich» (hell, warm, Schrift Manrope)
 design-b/             Design B «Sportlich und markant» (dunkel, Schrift Archivo, Strassenmarkierung)
-wunschliste/          Formular mit Live-Preis, Auswahl wird per E-Mail gesendet
+wunschliste/          Formular mit Live-Preis, Auswahl wird über Web3Forms direkt an Jonas gesendet
 assets/shared/        Vorschau-Leiste zum Wechseln zwischen den Designs, Grund-Design der Übersicht
 assets/img/           Fotos und Logos (WebP), Vorschaubilder der Designs
 assets/fonts/         Schriften lokal eingebunden (kein Google Fonts)
@@ -36,7 +36,9 @@ Alle Seiten sind auf `noindex` gestellt und `robots.txt` sperrt Suchmaschinen, d
 
 ## Wunschliste anpassen
 
-Jede Option hat im HTML ein Attribut `data-hours` mit den Stunden. Der Preis daneben und das Total werden daraus mit dem Stundenansatz berechnet. Der Stundenansatz (`RATE`) und die Empfänger-Adresse (`MAIL`) stehen oben in `wunschliste/app.js`.
+Jede Option hat im HTML ein Attribut `data-hours` mit den Stunden. Der Preis daneben und das Total werden daraus mit dem Stundenansatz berechnet. Der Stundenansatz (`RATE`), der Web3Forms-Schlüssel (`ACCESS_KEY`) und die Adresse für die Notlösung (`MAIL`) stehen oben in `wunschliste/app.js`.
+
+Die Auswahl wird über [Web3Forms](https://web3forms.com) direkt per E-Mail verschickt, ohne dass das E-Mail-Programm aufgeht. Der Schlüssel darf öffentlich im Code stehen. Web3Forms nimmt im Gratis-Abo nur Anfragen aus einem echten Browser an, ein Test mit `curl` bekommt deshalb absichtlich einen Fehler 403. Ist der Dienst nicht erreichbar, zeigt die Wunschliste als Notlösung einen Knopf, der das E-Mail-Programm mit der fertigen Nachricht öffnet.
 
 Mit der Standard-Auswahl ergibt die Wunschliste genau die Offerte: 48.5 Stunden à CHF 35, also CHF 1'697.50.
 

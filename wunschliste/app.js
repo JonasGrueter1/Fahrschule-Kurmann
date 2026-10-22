@@ -1,8 +1,10 @@
-/* Wunschliste: Preis live berechnen und Auswahl per E-Mail senden */
+/* Wunschliste: Preis live berechnen und Auswahl über Web3Forms an Jonas senden */
 (function () {
   'use strict';
 
   var RATE = 35;
+  // Web3Forms access key, meant to be public; submissions are mailed to Jonas
+  var ACCESS_KEY = 'd2e340ec-3d1e-4baf-9f1a-cdb4e59d18e9';
   // Assembled here so the address does not sit in the HTML for spam bots
   var MAIL = ['j_grueter', 'bluewin.ch'].join('@');
 
@@ -92,9 +94,22 @@
       }
       firstProblem = firstProblem || nameInput;
     }
+    var emailInput = $('f-mail');
+    var emailField = emailInput.closest('.field');
+    var oldErr = emailField.querySelector('.field-error');
+    if (oldErr) oldErr.remove();
+    emailField.classList.remove('has-error');
+    if (emailInput.value.trim() && !emailInput.checkValidity()) {
+      emailField.classList.add('has-error');
+      var mailErr = document.createElement('span');
+      mailErr.className = 'field-error';
+      mailErr.textContent = 'Bitte prüfen Sie die E-Mail-Adresse.';
+      emailField.appendChild(mailErr);
+      firstProblem = firstProblem || emailInput;
+    }
     if (firstProblem) {
       firstProblem.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      if (firstProblem === nameInput) nameInput.focus({ preventScroll: true });
+      if (firstProblem === nameInput || firstProblem === emailInput) firstProblem.focus({ preventScroll: true });
       return;
     }
 
@@ -126,16 +141,67 @@
     var subject = 'Wunschliste neue Website Fahrschule Kurmann';
     var body = lines.join('\n');
 
+    var payload = {
+      access_key: ACCESS_KEY,
+      subject: subject,
+      from_name: 'Wunschliste Fahrschule Kurmann',
+      name: v('name'),
+      phone: v('telefon'),
+      message: body,
+      botcheck: ''
+    };
+    // Web3Forms uses the email field as reply-to address
+    if (v('email')) payload.email = v('email');
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Wird gesendet …';
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (res) {
+        return res.json().then(function (json) {
+          if (!res.ok || !json.success) throw new Error(json.message || 'HTTP ' + res.status);
+        });
+      })
+      .then(function () {
+        showStatus('ok', 'Vielen Dank!', 'Ihre Auswahl ist bei mir angekommen. Ich melde mich in den nächsten Tagen bei Ihnen.');
+        submitBtn.textContent = 'Gesendet';
+      })
+      .catch(function () {
+        showFallback(subject, body);
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = submitLabel;
+      });
+  });
+
+  var submitBtn = document.querySelector('button[type="submit"][form="wish"]');
+  var submitLabel = submitBtn.innerHTML;
+
+  function showStatus(kind, title, text) {
     var status = $('status');
     status.hidden = false;
+    status.className = 'status' + (kind === 'error' ? ' status-error' : '');
     status.textContent = '';
     var strong = document.createElement('strong');
-    strong.textContent = 'Fast geschafft!';
-    var text = document.createElement('span');
-    text.textContent = 'Ihr E-Mail-Programm öffnet sich mit der fertigen Nachricht. Sie müssen sie nur noch absenden. Hat sich nichts geöffnet? Kopieren Sie den Text und senden Sie ihn an ';
+    strong.textContent = title;
+    var span = document.createElement('span');
+    span.textContent = text;
+    status.append(strong, span);
+    return status;
+  }
+
+  // If the form service cannot be reached, fall back to the visitor's own mail program
+  function showFallback(subject, body) {
+    var status = showStatus('error', 'Das Senden hat leider nicht geklappt.', 'Sie können Ihre Auswahl stattdessen per E-Mail an ');
     var link = document.createElement('a');
     link.href = 'mailto:' + MAIL;
     link.textContent = MAIL;
+    var mail = document.createElement('a');
+    mail.className = 'btn';
+    mail.href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    mail.textContent = 'E-Mail öffnen';
     var copy = document.createElement('button');
     copy.type = 'button';
     copy.className = 'btn';
@@ -147,10 +213,8 @@
         navigator.clipboard.writeText(all).then(done, function () { fallbackCopy(all); done(); });
       } else { fallbackCopy(all); done(); }
     });
-    status.append(strong, text, link, document.createTextNode('.'), document.createElement('br'), copy);
-
-    window.location.href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-  });
+    status.append(link, document.createTextNode(' senden.'), document.createElement('br'), mail, document.createTextNode(' '), copy);
+  }
 
   function fallbackCopy(text) {
     var ta = document.createElement('textarea');
